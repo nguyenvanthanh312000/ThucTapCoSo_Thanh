@@ -1,3 +1,26 @@
 Thiet bi mang va cau hinh
 2 loại định tuyến . Động và Tĩnh 
 packet tracer 8.0 
+
+Cấu hình định tuyến động : 
+  R1(config)#router rip
+R1(config-router)#version 2
+R1(config-router)#network 192.168.1.0
+R1(config-router)#network 192.168.3.0
+Cấu hình router R2: sử dụng RIP version 2
+R2(config)#router rip
+R2(config-router)#version 2
+R2(config-router)#network 192.168.2.0
+R2(config-router)#network 192.168.3.0
+Tóm lại, để cấu hình RIP cho router thì sử dụng các câu lệnh cơ bản sau:
+Router (config) # router rip
+Router (config-router) # version 2
+Router (config-router) # network mang_can_quang_ba
+
+Cấu hình định tuyến tĩnh : 
+  Router (config) # ip route destination_subnet subnetmask{IP_next_hop|output_interface} [AD]
+destination_subnet: mạng đích đến.
+subnetmask: subnet – mask của mạng đích.
+R1 (config) # ip route 192.168.2.0 255.255.255.0 f1/0
+hoặc
+R1 (config) # ip route 192.168.2.0 255.255.255.0 192.168.3.2
